@@ -5,27 +5,31 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 import customerRoutes from "./route/customer.js";
+import userRoutes from "./route/user.js";
 
 const app = express();
 app.use(formidable());
 app.use(cors());
 
 mongoose
-  .connect("mongodb://localhost/titanic", {
+  .connect(process.env.LOCALHOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("database connected"))
   .catch((e) => console.log(e));
 
-const port = 3000;
-
 app.use(customerRoutes);
+app.use(userRoutes);
 
 app.get("/", (req, res) => {
-  res.send("hiiiii");
+  res.send("hiiiii :)");
 });
 
-app.listen(port, () => {
-  console.log(`server started at port  ${port}`);
+app.get("*", (req, res) => {
+  res.status(404).send("page not found :(");
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`server started `);
 });

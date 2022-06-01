@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const Customer = mongoose.model("User", {
+const Customer = mongoose.model("Customer", {
   PassengerId: Number,
   Survived: Number,
   Pclass: Number,
