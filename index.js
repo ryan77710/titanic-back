@@ -4,6 +4,8 @@ import formidable from "express-formidable";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import customerRoutes from "./route/customer.js";
+
 const app = express();
 app.use(formidable());
 app.use(cors());
@@ -16,7 +18,9 @@ mongoose
   .then(() => console.log("database connected"))
   .catch((e) => console.log(e));
 
-const port = 3500;
+const port = 3000;
+
+app.use(customerRoutes);
 
 app.get("/", (req, res) => {
   res.send("hiiiii");
