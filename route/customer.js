@@ -1,8 +1,9 @@
 import express from "express";
 import Customer from "../model/Customer.js";
+import isLogin from "../middleware/isLogin.js";
 const router = express.Router();
 
-router.get("/search", async (req, res) => {
+router.get("/search", isLogin, async (req, res) => {
   console.log("route: /search");
   try {
     let filters = {};
