@@ -6,9 +6,11 @@ import encBase64 from "crypto-js/enc-base64.js";
 
 const router = express.Router();
 
-router.get("/signup", async (req, res) => {
+router.post("/signup", async (req, res) => {
   console.log("route: /signup");
   try {
+    console.log(req.fields);
+
     if (req.fields.email) {
       const find = await User.findOne({ email: req.fields.email });
       if (find) {
@@ -28,14 +30,14 @@ router.get("/signup", async (req, res) => {
         res.status(200).json(newAccount);
       }
     } else {
-      res.status(400).json({ message: "missing field" });
+      res.status(400).json({ message: "missing fieldd" });
     }
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 });
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   console.log("route: /login");
   try {
     const find = await User.findOne({ email: req.fields.email });
@@ -47,6 +49,7 @@ router.get("/login", async (req, res) => {
       const back = {
         id: find.id,
         token: find.token,
+        email: find.email,
       };
       res.status(200).json(back);
     } else {

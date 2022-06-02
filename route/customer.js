@@ -3,7 +3,7 @@ import Customer from "../model/Customer.js";
 import isLogin from "../middleware/isLogin.js";
 const router = express.Router();
 
-router.get("/search", isLogin, async (req, res) => {
+router.get("/search", async (req, res) => {
   console.log("route: /search");
   try {
     let filters = {};
@@ -18,6 +18,10 @@ router.get("/search", isLogin, async (req, res) => {
     if (req.query.Pclass) {
       filters.Pclass = req.query.Pclass;
     }
+    if (req.query.Survived) {
+      filters.Survived = 1;
+    }
+
     const customers = await Customer.find(filters);
     const count = await Customer.countDocuments(filters);
 
