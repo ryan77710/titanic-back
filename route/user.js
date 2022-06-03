@@ -9,8 +9,6 @@ const router = express.Router();
 router.post("/signup", async (req, res) => {
   console.log("route: /signup");
   try {
-    console.log(req.fields);
-
     if (req.fields.email) {
       const find = await User.findOne({ email: req.fields.email });
       if (find) {

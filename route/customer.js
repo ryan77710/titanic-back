@@ -1,6 +1,5 @@
 import express from "express";
 import Customer from "../model/Customer.js";
-import isLogin from "../middleware/isLogin.js";
 const router = express.Router();
 
 router.get("/search", async (req, res) => {
@@ -20,6 +19,9 @@ router.get("/search", async (req, res) => {
     }
     if (req.query.Survived) {
       filters.Survived = 1;
+    }
+    if (req.query.Embarked) {
+      filters.Embarked = req.query.Embarked;
     }
 
     const customers = await Customer.find(filters);
