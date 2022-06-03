@@ -891,13 +891,13 @@ const textdata = `1,0,3,"Braund, Mr. Owen Harris",male,22,1,0,A/5 21171,7.25,,S;
 889,0,3,"Johnston, Miss. Catherine Helen ""Carrie""",female,,1,2,W./C. 6607,23.45,,S;
 890,1,1,"Behr, Mr. Karl Howell",male,26,0,0,111369,30,C148,C;
 891,0,3,"Dooley, Mr. Patrick",male,32,0,0,370376,7.75,,Q`;
-mongoose
-  .connect("mongodb://localhost/titanic", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("connected"))
-  .catch((e) => console.log(e));
+// mongoose
+//   .connect("mongodb://localhost/titanic", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("connected"))
+//   .catch((e) => console.log(e));
 const cleanText = async () => {
   const data = dataText.split("\n");
 
