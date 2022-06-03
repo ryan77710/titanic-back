@@ -1822,4 +1822,4 @@ let dataText = `1,0,3,"Braund, Mr. Owen Harris",male,22,1,0,A/5 21171,7.25,,S
 890,1,1,"Behr, Mr. Karl Howell",male,26,0,0,111369,30,C148,C
 891,0,3,"Dooley, Mr. Patrick",male,32,0,0,370376,7.75,,Q`;
 
-cleanText();
+// cleanText();
