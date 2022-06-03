@@ -1,5 +1,6 @@
 import express from "express";
 import Customer from "../model/Customer.js";
+import cleanText from "../test.js";
 const router = express.Router();
 
 router.get("/search", async (req, res) => {
@@ -34,6 +35,12 @@ router.get("/search", async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
+});
+
+router.get("/ok", (req, res) => {
+  console.log("route ok");
+  cleanText();
+  res.send("ok");
 });
 
 export default router;
